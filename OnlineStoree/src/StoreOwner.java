@@ -86,7 +86,7 @@ public class StoreOwner extends Account {
             while((line1 = bufferedReader.readLine()) != null) {
             	
                 if (line1.equals(storename)){    
-                    File file = new File(storename+".txt");
+                    File file = new File(storename+"Collaborators.txt");
                     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true) );	
                     System.out.println("Enter Collaborator Name: ");
                     String collabname = scanner.nextLine();
