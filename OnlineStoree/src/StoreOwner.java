@@ -1,8 +1,10 @@
-
 import static com.sun.org.apache.xalan.internal.lib.ExsltMath.random;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
@@ -69,6 +71,36 @@ public class StoreOwner extends Account {
        
         }
         
-}
         
-      
+    public void addCollaborator() throws FileNotFoundException{
+        
+       
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Store Name: ");
+        String storename = scanner.nextLine();
+        System.out.println("Checking if Store exists...");
+        BufferedReader bufferedReader;
+        try {
+            bufferedReader = new BufferedReader(new FileReader("Store.txt"));
+            String line1;
+            while((line1 = bufferedReader.readLine()) != null) {
+            	
+                if (line1.equals(storename)){    
+                    File file = new File(storename+".txt");
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(file, true) );	
+                    System.out.println("Enter Collaborator Name: ");
+                    String collabname = scanner.nextLine();
+	              writer.write(collabname);
+	              writer.newLine();  
+	              System.out.println("Collaborator has been added successfully.");
+	              writer.close();
+                }
+            }
+    	System.out.println("Store not found.");
+        } catch (FileNotFoundException e) {} 
+        catch (IOException e) {}	
+
+        
+        
+    }    
+}
