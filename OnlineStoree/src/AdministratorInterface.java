@@ -55,7 +55,12 @@ public class AdministratorInterface {
          System.out.println("Enter Brand Code: ");
         Scanner bc = new Scanner(System.in);
         String brandecode = bc.nextLine();
-        AC.AddBrand(brandname, brandtype, brandcode);
+        try {
+		AC.AddBrand(brandname, brandtype, brandecode);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
 }
